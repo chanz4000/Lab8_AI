@@ -9,6 +9,7 @@ public class Node implements Comparator<Node>{
 	private String label;
 	private int value;
 	private List<Node> children = new ArrayList<Node>();
+	private Node parent;
 
 	// use for non-terminal node
 	public Node(String label) {
@@ -58,6 +59,14 @@ public class Node implements Comparator<Node>{
 		return this.getLabel().equals(that.getLabel());
 	}
 
+	public Node getParent() {
+		return parent;
+	}
+
+	public void setParent(Node parent) {
+		this.parent = parent;
+	}
+
 	@Override
 	public String toString() {
 		return this.label;
@@ -74,5 +83,16 @@ public class Node implements Comparator<Node>{
 	@Override
 	public int compare(Node o1, Node o2) {
 		return o1.getLabel().compareTo(o2.getLabel());
+	}
+	public Node max (Node o) {
+		if(this.getValue() > o.getValue()) return this;
+		else if(this.getValue() < o.value) return o;
+		else return this;
+	}
+	public Node min(Node o) {
+		// TODO Auto-generated method stub
+		if(this.getValue() < o.getValue()) return this;
+		else if(this.getValue() > o.value) return o;
+		else return this;
 	}
 }
